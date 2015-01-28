@@ -12,6 +12,8 @@
 *.la
 *.a
 
+*/build/**
+
 .DS_Store
 xcshareddata
 /MacDependency/MacDependency.xcodeproj/project.xcworkspace/xcuserdata/ant.xcuserdatad/UserInterfaceState.xcuserstate
