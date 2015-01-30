@@ -22,13 +22,14 @@ MacDependency.app is now in macdependency/MacDependency/build/Release
 ## Usage
 
 * Launch MacDependency.app
-* Drag&Drop a .dylib file on MacDependency icon in the dock
+* Use menu OR drag & drop a .dylib file on MacDependency icon in the dock
 
 ## Search Path of Library
 
 According to the author, macdependency is built on dyld doc and analysis of dyld 97.1 source code
 
 Main logic of is in dyld.cpp method
+
 	ImageLoader* load(const char* path, const LoadContext& context)
 
 * dyld doc : https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/dyld.1.html
@@ -36,9 +37,8 @@ Main logic of is in dyld.cpp method
 
 NOTE : Maybe macdependency should be updated with an analysis of last version of dyld
 
-ORIGINAL POST : https://code.google.com/p/macdependency/wiki/SearchPaths
 
-MECHANISM :
+### MECHANISM :
 
 First of all the dependent filename is stripped, so that only the filename without any path information is extracted. Then the dyld tries to find the file in different directories in the following order. As soon as the file is found, the mechanism terminates:
 
@@ -49,3 +49,5 @@ First of all the dependent filename is stripped, so that only the filename witho
 * find filename (including original path information)
 * if filename is a framework: find framework name (without path information) in all paths given by DYLD_FALLBACK_FRAMEWORK_PATH (separated by ":"). If this environment variable isn't set, it instead looks in the following default paths: ~/Library/Frameworks,/Library/Frameworks,/Network/Library/Frameworks,/System/Library/Frameworks
 * find filename in all paths given by DYLD_FALLBACK_LIBRARY_PATH (separated by ":"). If this environment variable isn't set, it instead looks in the following default paths: ~/lib,/usr/local/lib,/lib,/usr/lib
+
+ORIGINAL POST : https://code.google.com/p/macdependency/wiki/SearchPaths
