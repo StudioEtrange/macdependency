@@ -38,8 +38,6 @@ Main logic of is in dyld.cpp method
 NOTE : Maybe macdependency should be updated with an analysis of last version of dyld
 
 
-### MECHANISM :
-
 First of all the dependent filename is stripped, so that only the filename without any path information is extracted. Then the dyld tries to find the file in different directories in the following order. As soon as the file is found, the mechanism terminates:
 
 * find filename in all paths given by LD_LIBRARY_PATH (separated by ":")
